@@ -15,18 +15,18 @@ function App() {
     <ApolloProvider>
       <Router>
         <div className="App">
-          <Header/>
+          <header/>
             <Routes>
               <Route
                 path="/"
-                element={<Home />}
+                //element={<Home />}
                 />
               <Route 
                 path="/users/:userId"
-                element={<SingleUser />}
+                //element={<SingleUser />}
               />
             </Routes>
-          <Footer/>
+          <footer/>
         </div>
       </Router>
     </ApolloProvider>
