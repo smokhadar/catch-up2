@@ -20,7 +20,7 @@ const userSchema = new Schema({
         minlength: 5,
     },
     profilePic: {
-        type: String,
+        type: String, //Maybe change this to IMG or something
         required: true,
     },
     // posts: [posts],

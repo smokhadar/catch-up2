@@ -1,9 +1,12 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const { dblClick } = require('@testing-library/user-event/dist/click');
-
+// const { dblClick } = require('@testing-library/user-event/dist/click');
+const resolvers = require('./schemas/resolvers/index');
+const typeDefs = require('./schemas/typeDefs');
 // const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,7 +26,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-const startApolloServer = async() => {
+const startApolloServer = async( typeDefs, resolvers) => {
     await server.start();
     server.applyMiddleware({ app });
 
@@ -35,4 +38,4 @@ const startApolloServer = async() => {
     })
 };
 
-startApolloServer();
+startApolloServer( typeDefs, resolvers );
