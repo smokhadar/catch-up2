@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+//import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // import components
 
@@ -12,24 +12,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <ApolloProvider>
-      <Router>
+    // <ApolloProvider>
+    //   <Router>
         <div className="App">
-          <header/>
-            <Routes>
-              <Route
-                path="/"
-                //element={<Home />}
-                />
-              <Route 
-                path="/users/:userId"
-                //element={<SingleUser />}
-              />
-            </Routes>
+          <header> Catch Up 2.0 </header>
+       
           <footer/>
         </div>
-      </Router>
-    </ApolloProvider>
+    //   </Router>
+    // </ApolloProvider>
   );
 }
 
