@@ -15,10 +15,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
+   
     <ApolloProvider client={client}>
+    
        <Router>
+      
         <div className="App">
-          <header> Catch Up 2.0 </header>
+          
           <Routes>
             {/* <Route path="/" element={<LoginPage />} /> */}
             <Route

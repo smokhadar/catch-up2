@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 
 // // import components
 
@@ -23,12 +23,15 @@ const HomePage = () => {
   return (
     <div>
      <header> Catch Up Home Page </header>
-      
-       
-      
-       
-     
-    </div>
+     <nav>
+    <a href="#">Notifications </a>
+    <a href="#">Messages </a>
+    <a href="#">Friends </a>
+    <input type="search" id="search" placeholder='search for friends'></input>
+   
+   </nav>
+   </div>
+   
   );
 };
 
