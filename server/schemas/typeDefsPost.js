@@ -1,36 +1,49 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-
-
   type Post {
-    _id: ID
-    postText: String
-    postAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    _id: ID!
+    postText: String!
+    postAuthor: String!
+    createdAt: String!
+    comments: [Comment]
+    likes: [Like]
+    dislikes: [Dislike]
+    likeCount: Int!
+    dislikeCount: Int!
   }
 
   type Comment {
-    _id: ID
-    commentText: String
+    _id: ID!
+    commentText: String!
     commentAuthor: String
     createdAt: String
   }
 
+  type Like {
+    _id: ID!
+    createdAt: String!
+    username: String!
+  }
 
-//   type Mutation {
-//     addUser(username: String!, email: String!, password: String!): Auth
-//     login(email: String!, password: String!): Auth
-//     addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-//     addComment(
-//       thoughtId: ID!
-//       commentText: String!
-//       commentAuthor: String!
-//     ): Thought
-//     removeThought(thoughtId: ID!): Thought
-//     removeComment(thoughtId: ID!, commentId: ID!): Thought
-//   }
+  type Dislike {
+    _id: ID!
+    createdAt: String!
+    username: String!
+  }
+
+  type Query {
+    getPosts: [Post],
+    getPost(postId: ID!): Post
+  }
+  type Mutation {
+    createPost(body: String!): Post!
+    deletePost(body: String!): String!
+    addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post!
+    removeComment(postId: ID!, commentId: ID!): Post!
+    likePost(postId: ID!): Post!
+    dislikePost(postId: ID!): Post!
+  }
 `;
 
 module.exports = typeDefs;
