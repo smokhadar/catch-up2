@@ -36,6 +36,7 @@ const typeDefs = gql`
     getPosts: [Post],
     getPost(postId: ID!): Post
   }
+
   type Mutation {
     createPost(body: String!): Post!
     deletePost(body: String!): String!
@@ -43,6 +44,10 @@ const typeDefs = gql`
     removeComment(postId: ID!, commentId: ID!): Post!
     likePost(postId: ID!): Post!
     dislikePost(postId: ID!): Post!
+  }
+
+  type Subscription {
+    newPost: Post!
   }
 `;
 
