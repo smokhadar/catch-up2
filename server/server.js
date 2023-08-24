@@ -2,11 +2,8 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 // const { dblClick } = require('@testing-library/user-event/dist/click');
-const resolvers = require('./schemas/resolvers/index');
-const typeDefs = require('./schemas/typeDefs');
-// const { typeDefs, resolvers } = require('./schemas');
+const { typeDefs, resolvers } = require('./schemas/index');
 const db = require('./config/connection');
-
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -17,6 +14,8 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// TO DO add auth middleware and context
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
