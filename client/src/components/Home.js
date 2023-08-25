@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Grid, Transition, Input, Menu, Header, Segment, Container} from 'semantic-ui-react';
+import { Grid, Transition, Input, Menu, Header, Segment, Container, Icon, Image} from 'semantic-ui-react';
 
 
 
@@ -8,20 +8,14 @@ import { Grid, Transition, Input, Menu, Header, Segment, Container} from 'semant
 
 const HomePage = () => {
   
-  //render() {
-  const  {color}  = 'red';
+ 
+  
   return (
   
 
-    //  <Grid columns={3}>
-         <div> 
-    <Segment>
-     <Header as='h1' textAlign='center'>Welcome to CatchUp 2.0</Header>
-   </Segment>
- </div>,
-      //</Grid><Grid.Row className="page-title">
-      
-        <Menu color='olive' inverted widths>
+
+      <Container fluid>
+        <Menu color='green' inverted widths>
         <Menu.Item
           name='home'
           // active={activeItem === 'home'}
@@ -37,18 +31,19 @@ const HomePage = () => {
           // active={activeItem === 'friends'}
           // onClick={this.handleItemClick}
         />
-         <Menu.Item
-         />
-        <Menu.Menu position='center'>
+        
+        <Menu.Menu position='right'>
           <Menu.Item header>
-          <Header >Welcome to CatchUp 2.0</Header>
+          <Header textAlign='center' >   Welcome to CatchUp 2.0   </Header>
           </Menu.Item>
-          <Menu.Item   
-         />
+         
         </Menu.Menu>
         <Menu.Menu position='right'>
           <Menu.Item>
-            <Input icon='search' placeholder='Search...' />
+            <Input icon='search' placeholder='Search for Friends' />
+          </Menu.Item>
+          <Menu.Item>
+            <Icon link name='bell' />
           </Menu.Item>
           <Menu.Item
             name='logout'
@@ -56,12 +51,45 @@ const HomePage = () => {
             // onClick={this.handleItemClick}
           />
         </Menu.Menu>
-      </Menu>
+      </Menu> 
+
+       <Grid columns='equal'>
+       <Grid.Row stretched>
+         <Grid.Column>
+           <Segment>1</Segment>
+           <Segment>2</Segment>
+         </Grid.Column>
+         <Grid.Column width={6}>
+           <Segment>
+           <div> New post box</div>
+           </Segment>
+         </Grid.Column>
+         <Grid.Column>
+           <Segment>1</Segment>
+           <Segment>2</Segment>
+         </Grid.Column>
+       </Grid.Row>
+       <Grid.Row>
+         <Grid.Column>
+           <Segment>1</Segment>
+           <Segment>2</Segment>
+         </Grid.Column>
+         <Grid.Column width={6}>
+           <Segment>
+           <div> Posts..</div>
+           </Segment>
+         </Grid.Column>
+         <Grid.Column>
+           <Segment>1</Segment>
+           <Segment>2</Segment>
+         </Grid.Column>
+       </Grid.Row>
+     </Grid>
      
-    
+     </Container>
          
   );
- // }
+ 
  
 };
 
