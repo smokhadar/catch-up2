@@ -1,5 +1,6 @@
 import './App.css';
 import HomePage from "./components/Home";
+import { NewPost } from './components/NewPost';
 import React from 'react';
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
@@ -26,9 +27,12 @@ function App() {
             {/* <Route path="/" element={<LoginPage />} /> */}
             <Route
               path="/home"
-              element={ <HomePage />}
+              element={ <HomePage /> }
             />
-         
+            <Route
+              path="/newPost"
+              element={ <NewPost /> }
+            />
           </Routes>
          
         </div>
