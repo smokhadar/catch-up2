@@ -26,23 +26,24 @@ const resolvers = {
         }
     },
     Mutation: {
-        async createPost(parent, { body }, context) {
+        async createPost(parent, { postText, postAuthor }, context) {
             // const user = checkAuth(context);
 
-            if (body.trim() === '') {
+            if (postText.trim() === '') {
                 throw new Error('Post body must not be empty');
             }
 
             const newPost = new Post({
-                postBody: body,
-                author: user.username,
+                postText: postText,
+                // author: user.username,
+                postAuthor: postAuthor
             });
 
             const post = await newPost.save();
 
-            context.pubsub.publish('NEW_POST', {
-                newPost: post
-            });
+            // context.PubSub.publish('NEW_POST', {
+            //     newPost: post
+            // });
 
             return post;
         },
@@ -50,8 +51,9 @@ const resolvers = {
             // const user = checkAuth(context);
 
             try {
-                const post = await Post.findbyId(postId);
-                if (user.username === post.author) {
+                const post = await Post.findById(postId);
+                // if (user.username === post.author) {
+                if (postId) {
                     await post.delete();
                     return 'Post deleted successfully';
                 } else {
@@ -104,7 +106,7 @@ const resolvers = {
     },
     Subscription: {
         newPost: {
-            subscribe: (parent, __, { pubsub }) => pubsub.asyncIterator('NEW_POST')
+            subscribe: (parent, __, { PubSub }) => PubSub.asyncIterator('NEW_POST')
         }
     }
 };
