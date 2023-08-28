@@ -65,8 +65,9 @@ const resolvers = {
         },
         async likePost(parent, { postId }, context) {
             // const { username } = checkAuth(context);
+            const username = 'test';
 
-            const post = await Post.findbyId(postId);
+            const post = await Post.findById(postId);
             if (post) {
                 if (post.likes.find((like) => like.username === username)) {
                     // Post already likes, unlike it
@@ -102,6 +103,56 @@ const resolvers = {
                 await post.save();
                 return post;
             } else throw new UserInputError('Post not found');
+        },
+        async addComment (parent, { postId, commentText, commentAuthor }, context) {
+            try {
+                if (commentText.trim() === '') {
+                    throw new UserInputError('Empty comment', {
+                        errors: {
+                            body: 'Comment cannot be empty'
+                        }
+                    });
+                }
+                const post = await Post.findOneAndUpdate(
+                    { _id: postId },
+                    {
+                        $addToSet: {
+                            comments: { commentText, commentAuthor: 'test'},
+                        },
+                    },
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                );
+
+                if (!post) throw new Error('Post not found');
+
+                await post.save();
+                return post;
+            } catch (e){
+                throw new Error(e);
+            }
+        },
+        async removeComment(parent, { postId, commentId }, context) {
+            // const { username } = checkAuth(context);
+            const username = 'test';
+
+            try {
+                const post = await Post.findById(postId);
+                if (post) {
+                    const commentIndex = post.comments.findIndex((c) => c.id === commentId);
+
+                    if (post.comments[commentIndex].commentAuthor === username) {
+                        post.comments.splice(commentIndex, 1);
+                        await post.save();
+                        return post;
+                    } else throw new AuthenticationError('Action not allowed');
+
+                } else throw new UserInputError('Post not found');
+            } catch (err) {
+                console.log(err);
+            }
         }
     },
     Subscription: {
