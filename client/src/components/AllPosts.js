@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_POSTS } from '../utils/queries';
 // import like, dislike, and comment on posts mutations
@@ -37,7 +37,7 @@ export const PostFeed = () => {
                             </div>
                             <div className="meta">
                                 <a className="like">
-                                    <i className="like icon"></i>{post.likes}
+                                    <i className="green heart icon"></i>{post.likeCount}
                                 </a>
                             </div>
                         </div>

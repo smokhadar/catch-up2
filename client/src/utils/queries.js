@@ -7,6 +7,7 @@ query GetPosts {
     postAuthor
     postText
     createdAt
+    likeCount
   }
 }
 `;
