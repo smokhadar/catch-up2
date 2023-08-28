@@ -33,7 +33,7 @@ export const NewPost = () => {
     }
 
     return (
-        <div class="ui form">
+        <div className="ui form">
             <form onSubmit={handleFormSubmit} className="newpost field">
                 <label>What's on your mind?</label>
                 <textarea 

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid, Transition, Input, Menu, Header, Segment, Container, Icon, Image} from 'semantic-ui-react';
 import { NewPost } from './NewPost';
+import { PostFeed } from './AllPosts';
 
 const HomePage = () => {
   
@@ -54,6 +55,7 @@ const HomePage = () => {
          </Grid.Column>
          <Grid.Column width={6}>
            <Segment>
+            {/* new post component */}
            < NewPost/>
            </Segment>
          </Grid.Column>
@@ -69,7 +71,8 @@ const HomePage = () => {
          </Grid.Column>
          <Grid.Column width={6}>
            <Segment>
-           <div> Posts..</div>
+            {/* all posts feed */}
+           < PostFeed/>
            </Segment>
          </Grid.Column>
          <Grid.Column>
