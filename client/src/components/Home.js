@@ -1,19 +1,12 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid, Transition, Input, Menu, Header, Segment, Container, Icon, Image} from 'semantic-ui-react';
-
-
-
-
+import { NewPost } from './NewPost';
 
 const HomePage = () => {
   
  
-  
   return (
-  
-
-
       <Container fluid>
         <Menu color='green' inverted widths>
         <Menu.Item
@@ -61,7 +54,7 @@ const HomePage = () => {
          </Grid.Column>
          <Grid.Column width={6}>
            <Segment>
-           <div> New post box</div>
+           < NewPost/>
            </Segment>
          </Grid.Column>
          <Grid.Column>

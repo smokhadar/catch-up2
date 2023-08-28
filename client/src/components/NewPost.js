@@ -33,8 +33,8 @@ export const NewPost = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleFormSubmit} className="newpost">
+        <div class="ui form">
+            <form onSubmit={handleFormSubmit} className="newpost field">
                 <label>What's on your mind?</label>
                 <textarea 
                 name="postBody"
@@ -42,7 +42,7 @@ export const NewPost = () => {
                 onChange={handleChange}
                 type="text" rows="3"></textarea>
                 {/* upload image option? */}
-                <button>Post</button>
+                <button className="ui green button">Post</button>
             </form>
 
             {error && (
