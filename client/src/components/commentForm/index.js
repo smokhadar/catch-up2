@@ -70,4 +70,5 @@ export const CommentForm = ({ postId }) => {
             </form>
         </div>
     )
-}
+};
+export default CommentForm;
