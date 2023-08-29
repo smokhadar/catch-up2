@@ -6,7 +6,6 @@ import { PostFeed } from './AllPosts';
 import { Profile } from './profile';
 
 const HomePage = () => {
-  
  
   return (
       <Container fluid>
