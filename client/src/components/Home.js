@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Grid, List, Input, Menu, Header, Segment, Container, Icon, Dropdown} from 'semantic-ui-react';
+import { Grid, List, Input, Menu, Header, Segment, Container, Icon, Dropdown, Divider} from 'semantic-ui-react';
 import { NewPost } from './NewPost';
 import { PostFeed } from './AllPosts';
 import { Profile } from './profile';
+
 
 import { Link } from 'react-router-dom';
 //import { AuthContext } from '../context/auth';
@@ -12,6 +13,7 @@ const pathname = window.location.pathname;
 //const [activeItem, setActiveItem] = useState(path);
 //const path = pathname === '/' ? 'home' : pathname.substr(1);
 //const handleItemClick = (e, { name }) => setActiveItem(name);
+
 
 
 
@@ -55,6 +57,8 @@ const HomePage = () => {
         <Menu.Menu position='right'>
           <Menu.Item>
             <Input icon='search' placeholder='Search for Friends' />
+            {/* < SearchFriend/> */}
+
           </Menu.Item>
           <Menu.Item>
             <Icon link name='bell' />
@@ -63,6 +67,8 @@ const HomePage = () => {
             name='logout'
             // active={activeItem === 'logout'}
             // onClick={this.handleItemClick}
+            as={Link}
+            to="/login"
           />
         </Menu.Menu>
       </Menu> 
@@ -70,28 +76,32 @@ const HomePage = () => {
        <Grid columns='equal'>
        <Grid.Row stretched>
          <Grid.Column>
-
-           <Segment>Profile</Segment>
+         
            
-
-           <Segment>
+           
+          
+           <Segment textAlign='center' color='teal'>
+           <Header>Your Profile</Header>
             {/* profile */}
             <Profile/>
+          
            </Segment>
            
 
          </Grid.Column>
          <Grid.Column width={6}>
-           <Segment>
+           <Segment  color='teal'>
             {/* new post component */}
            < NewPost/>
            </Segment>
          </Grid.Column>
          <Grid.Column>
-          <Segment>
+          <Segment  color='teal'>
          <Header>Recently Online</Header>
+         <Divider horizontal></Divider>
          <List>
         <List.Item>
+        <List.Icon name='github' color='red' size='large' />
           <List.Content>
             <List.Header as='a'>Rachel Gray</List.Header>
             <List.Description>
@@ -99,8 +109,9 @@ const HomePage = () => {
             </List.Description>
           </List.Content>
         </List.Item>
+        <Divider horizontal></Divider>
         <List.Item>
-          
+        <List.Icon name='chess queen' color='red' size='large' />
           <List.Content>
             <List.Header as='a'>Lindsay Park</List.Header>
             <List.Description>
@@ -108,8 +119,9 @@ const HomePage = () => {
             </List.Description>
           </List.Content>
         </List.Item>
+        <Divider horizontal></Divider>
         <List.Item>
-          
+        <List.Icon name='hand peace' color='red' size='large' />
           <List.Content>
             <List.Header as='a'>Matthew Smith</List.Header>
             <List.Description>
@@ -117,8 +129,9 @@ const HomePage = () => {
             </List.Description>
           </List.Content>
         </List.Item>
+        <Divider horizontal></Divider>
         <List.Item>
-         
+        <List.Icon name='genderless' color='red' size='large' />
           <List.Content>
             <List.Header as='a'>Jenny Hess</List.Header>
             <List.Description>
@@ -128,8 +141,9 @@ const HomePage = () => {
            
           </List.Content>
         </List.Item>
+        <Divider horizontal></Divider>
         <List.Item>
-         
+        <List.Icon name='coffee' color='red' size='large' />
           <List.Content>
             <List.Header as='a'>Veronika Ossi</List.Header>
             <List.Description>
@@ -149,7 +163,7 @@ const HomePage = () => {
          </Grid.Column>
          <Grid.Column width={6}>
           <Header>Recent Posts</Header>
-           <Segment>
+           <Segment color='teal'>
             {/* all posts feed */}
            < PostFeed/>
            </Segment>
