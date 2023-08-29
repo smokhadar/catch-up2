@@ -43,7 +43,11 @@ export const NewPost = () => {
                 onChange={handleChange}
                 type="text" rows="3"></textarea>
                 {/* upload image option? */}
-                <Button color='teal'>Post</Button>
+
+               
+
+                <button className="ui teal button">Post</button>
+
             </form>
 
             {error && (

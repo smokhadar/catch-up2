@@ -1,7 +1,8 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_POSTS } from '../utils/queries';
 // import like, dislike, and comment on posts mutations
+import { LIKE_POST } from '../utils/mutations';
 
 export const PostFeed = () => {
     // import posts from db
@@ -9,6 +10,25 @@ export const PostFeed = () => {
         fetchPolicy: "no-cache"
     });
     const posts = data?.getPosts || [];
+
+    const [likePost, { error }] = useMutation(LIKE_POST);
+
+    // const handleChange = (event) => {
+    //     const { postId } = event.target;
+    // }
+
+    // pass in username from auth
+    const handleLike = async (event, postId) => {
+        try {
+            event.preventDefault();
+            const { data } = await likePost({
+                variables: {_id: postId}
+            });
+            console.log('post liked');
+        } catch(e) {
+            console.log(e);
+        }
+    }
 
     return (
         <div>
@@ -35,15 +55,22 @@ export const PostFeed = () => {
                             <div className="extra text">
                                 {post.postText}
                             </div>
-                            <div className="meta">
+                            <div className="meta"
+                            onClick={() => handleLike(post._id)}>
                                 <a className="like">
-                                    <i className="green heart icon"></i>{post.likeCount}
+                                    <i className="teal heart icon"></i>{post.likeCount}
                                 </a>
                             </div>
                         </div>
                     </div>
                     );
                 })}
+
+                {error && (
+                    <div>
+                        {error.message}
+                    </div>
+                )}
              </div>
             )}
         </div>

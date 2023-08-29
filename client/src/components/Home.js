@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Grid, List, Input, Menu, Header, Segment, Container, Icon, Dropdown} from 'semantic-ui-react';
 import { NewPost } from './NewPost';
 import { PostFeed } from './AllPosts';
+
 import { Link } from 'react-router-dom';
 //import { AuthContext } from '../context/auth';
 //const { user, logout } = useContext(AuthContext);
@@ -11,8 +12,10 @@ const pathname = window.location.pathname;
 //const path = pathname === '/' ? 'home' : pathname.substr(1);
 //const handleItemClick = (e, { name }) => setActiveItem(name);
 
+import { Profile } from './profile';
+
+
 const HomePage = () => {
-  
  
   return (
       <Container fluid>
@@ -67,8 +70,16 @@ const HomePage = () => {
        <Grid columns='equal'>
        <Grid.Row stretched>
          <Grid.Column>
+
            <Segment>Profile</Segment>
            
+
+           <Segment>
+            {/* profile */}
+            <Profile/>
+           </Segment>
+           <Segment>2</Segment>
+
          </Grid.Column>
          <Grid.Column width={6}>
            <Segment>

@@ -11,3 +11,27 @@ query GetPosts {
   }
 }
 `;
+
+export const QUERY_SINGLE_POST = gql`
+    query GetPost($postId: ID!) {
+    getPost(postId: $postId) {
+      _id
+      postText
+      postAuthor
+      createdAt
+    }
+  }
+`;
+
+
+export const QUERY_USER = gql`
+  query getUser ($_id: String) {
+    user (_id: $_id) {
+      _id
+      username
+      profilePic
+      friends
+      posts
+    }
+  }
+`;
