@@ -12,7 +12,7 @@ import {
 } from 'semantic-ui-react';
 
 
-export default function Profile() {
+export const Profile = () => {
   const { userId, postId } = useParams();
   const { loading, error, data } = useQuery(QUERY_USER);
 
