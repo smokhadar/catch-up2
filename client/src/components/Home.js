@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Grid, Transition, Input, Menu, Header, Segment, Container, Icon, Image} from 'semantic-ui-react';
 import { NewPost } from './NewPost';
 import { PostFeed } from './AllPosts';
+import { Profile } from './profile';
 
 const HomePage = () => {
   
@@ -50,7 +51,10 @@ const HomePage = () => {
        <Grid columns='equal'>
        <Grid.Row stretched>
          <Grid.Column>
-           <Segment>1</Segment>
+           <Segment>
+            {/* profile */}
+            <Profile/>
+           </Segment>
            <Segment>2</Segment>
          </Grid.Column>
          <Grid.Column width={6}>
