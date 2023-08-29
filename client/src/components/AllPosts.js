@@ -37,7 +37,7 @@ export const PostFeed = () => {
                             </div>
                             <div className="meta">
                                 <a className="like">
-                                    <i className="green heart icon"></i>{post.likeCount}
+                                    <i className="teal heart icon"></i>{post.likeCount}
                                 </a>
                             </div>
                         </div>
