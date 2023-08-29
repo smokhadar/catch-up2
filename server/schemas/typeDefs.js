@@ -1,16 +1,14 @@
 const { gql } = require('apollo-server-express');
 
-const typeDefs = gql`
-type Post {
+const typeDefsUser = gql`
 
-}
-
-type Comment {
-
-}
 
 type User {
-
+  id: ID!
+  username: String!
+  profilePic: String
+  friends: Int
+  posts: Int
 }
 
 type Query {
@@ -24,4 +22,4 @@ type Mutation {
 
 `;
 
-module.exports = typeDefs;
+module.exports = typeDefsUser;

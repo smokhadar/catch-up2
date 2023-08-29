@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import Login from "./pages/login";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Profile from "./pages/profile";
 
 // import components
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/newPost" element={<NewPost />} />
             <Route path="/postFeed" element={<PostFeed />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </Router>

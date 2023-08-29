@@ -11,3 +11,15 @@ query GetPosts {
   }
 }
 `;
+
+export const QUERY_USER = gql`
+  query getUser ($_id: String) {
+    user (_id: $_id) {
+      _id
+      username
+      profilePic
+      friends
+      posts
+    }
+  }
+`;
