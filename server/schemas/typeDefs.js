@@ -1,8 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefsUser = gql`
-
-
 type User {
   id: ID!
   username: String!
@@ -17,9 +15,7 @@ type Query {
 }
 
 type Mutation {
-  addUser(username: String!, email: String!, password: String!, profilePic: String! ) 
-}
-
-`;
+  addUser(username: String!, email: String!, password: String!, profilePic: String!): User!
+}`;
 
 module.exports = typeDefsUser;

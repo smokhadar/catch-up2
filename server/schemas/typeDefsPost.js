@@ -13,6 +13,14 @@ const typeDefs = gql`
     dislikeCount: Int!
   }
 
+  type User {
+    id: ID!
+    username: String!
+    profilePic: String
+    friends: Int
+    posts: Int
+  }
+
   type Comment {
     _id: ID!
     commentText: String!
@@ -35,6 +43,8 @@ const typeDefs = gql`
   type Query {
     getPosts: [Post],
     getPost(postId: ID!): Post
+    user: [User]
+    post: [Post]
   }
 
   type Mutation {
@@ -44,6 +54,7 @@ const typeDefs = gql`
     removeComment(postId: ID!, commentId: ID!): Post!
     likePost(postId: ID!): Post!
     dislikePost(postId: ID!): Post!
+    addUser(username: String!, email: String!, password: String!, profilePic: String!): User!
   }
 
   type Subscription {
