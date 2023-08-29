@@ -18,6 +18,7 @@ const server = new ApolloServer({
     await verifyUser(req);
     return {
       email: req.email,
+      loggedInUserId: req.loggedInUserId,
     };
   },
 });

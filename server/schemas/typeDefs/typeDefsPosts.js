@@ -11,6 +11,7 @@ module.exports = gql`
     dislikes: [Dislike]
     likeCount: Int!
     dislikeCount: Int!
+    user: User!
   }
 
   type Comment {
@@ -33,8 +34,8 @@ module.exports = gql`
   }
 
   extend type Query {
-    getPosts: [Post]
-    getPost(postId: ID!): Post
+    posts: [Post]
+    post(postId: ID!): Post
   }
 
   extend type Mutation {
