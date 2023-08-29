@@ -1,5 +1,6 @@
 import "./App.css";
 import HomePage from "./components/Home";
+import FriendsList from "./components/Friends";
 import { NewPost } from "./components/NewPost";
 import { PostFeed } from "./components/AllPosts";
 import React from "react";

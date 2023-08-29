@@ -1,30 +1,50 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Grid, Transition, Input, Menu, Header, Segment, Container, Icon, Image} from 'semantic-ui-react';
+import { Grid, List, Input, Menu, Header, Segment, Container, Icon, Dropdown} from 'semantic-ui-react';
 import { NewPost } from './NewPost';
 import { PostFeed } from './AllPosts';
+
+import { Link } from 'react-router-dom';
+//import { AuthContext } from '../context/auth';
+//const { user, logout } = useContext(AuthContext);
+const pathname = window.location.pathname;
+//const [activeItem, setActiveItem] = useState(path);
+//const path = pathname === '/' ? 'home' : pathname.substr(1);
+//const handleItemClick = (e, { name }) => setActiveItem(name);
+
 import { Profile } from './profile';
+
 
 const HomePage = () => {
  
   return (
       <Container fluid>
-        <Menu color='green' inverted widths>
+        <Menu color='teal' inverted widths>
         <Menu.Item
           name='home'
           // active={activeItem === 'home'}
-          // onClick={this.handleItemClick}
-        />
+          //onClick={handleItemClick}
+          as={Link}
+          to="/home"
+          />
         <Menu.Item
           name='messages'
           // active={activeItem === 'messages'}
-          // onClick={this.handleItemClick}
+          onClick=""
+          as={Link}
+          to="/home"
         />
-        <Menu.Item
-          name='friends'
-          // active={activeItem === 'friends'}
-          // onClick={this.handleItemClick}
-        />
+        
+       <Dropdown item text='Friends'>
+       <Dropdown.Menu>
+         <Dropdown.Item>Veronika Ossi</Dropdown.Item>
+         <Dropdown.Item>Jenny Hess</Dropdown.Item>
+         <Dropdown.Item>Rachel Gray</Dropdown.Item>
+         <Dropdown.Item>Lindsay Park</Dropdown.Item>
+         <Dropdown.Item>Matthew Smith</Dropdown.Item>
+         </Dropdown.Menu>
+      </Dropdown>
+        
         
         <Menu.Menu position='right'>
           <Menu.Item header>
@@ -50,11 +70,16 @@ const HomePage = () => {
        <Grid columns='equal'>
        <Grid.Row stretched>
          <Grid.Column>
+
+           <Segment>Profile</Segment>
+           
+
            <Segment>
             {/* profile */}
             <Profile/>
            </Segment>
            <Segment>2</Segment>
+
          </Grid.Column>
          <Grid.Column width={6}>
            <Segment>
@@ -63,14 +88,64 @@ const HomePage = () => {
            </Segment>
          </Grid.Column>
          <Grid.Column>
-           <Segment>1</Segment>
-           <Segment>2</Segment>
+         <Header>Recently Online</Header>
+         <List>
+        <List.Item>
+         
+          <List.Content>
+            <List.Header as='a'>Rachel Gray</List.Header>
+            <List.Description>
+            Last seen 7 hours ago.
+            </List.Description>
+          </List.Content>
+        </List.Item>
+        <List.Item>
+          
+          <List.Content>
+            <List.Header as='a'>Lindsay Park</List.Header>
+            <List.Description>
+              Last seen 5 hours ago.
+            </List.Description>
+          </List.Content>
+        </List.Item>
+        <List.Item>
+          
+          <List.Content>
+            <List.Header as='a'>Matthew Smith</List.Header>
+            <List.Description>
+              Last seen yesterday.
+            </List.Description>
+          </List.Content>
+        </List.Item>
+        <List.Item>
+         
+          <List.Content>
+            <List.Header as='a'>Jenny Hess</List.Header>
+            <List.Description>
+              Last seen yesterday. 
+             
+            </List.Description>
+           
+          </List.Content>
+        </List.Item>
+        <List.Item>
+         
+          <List.Content>
+            <List.Header as='a'>Veronika Ossi</List.Header>
+            <List.Description>
+              Last seen yesterday.
+              
+            </List.Description>
+           
+          </List.Content>
+        </List.Item>
+      </List>
          </Grid.Column>
        </Grid.Row>
        <Grid.Row>
          <Grid.Column>
-           <Segment>1</Segment>
-           <Segment>2</Segment>
+           <Segment></Segment>
+           <Segment></Segment>
          </Grid.Column>
          <Grid.Column width={6}>
            <Segment>
@@ -79,8 +154,7 @@ const HomePage = () => {
            </Segment>
          </Grid.Column>
          <Grid.Column>
-           <Segment>1</Segment>
-           <Segment>2</Segment>
+         
          </Grid.Column>
        </Grid.Row>
      </Grid>
