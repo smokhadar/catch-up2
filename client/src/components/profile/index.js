@@ -26,9 +26,10 @@ export const Profile = () => {
     <div className="profile-widget">
       <div className="profile-header">
         <Image
+          
           className="profile-image"
           src={'../avatar_2.png'}
-          size='small' centered
+          size='small' 
           
         // alt={`${user.firstName} ${user.lastName}`}
         />
