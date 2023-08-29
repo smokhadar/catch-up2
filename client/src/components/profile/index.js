@@ -12,7 +12,7 @@ import {
 } from 'semantic-ui-react';
 
 
-export default function Profile() {
+export const Profile = () => {
   const { userId, postId } = useParams();
   const { loading, error, data } = useQuery(QUERY_USER);
 
@@ -28,6 +28,8 @@ export default function Profile() {
         <Image
           className="profile-image"
           src={'../avatar_2.png'}
+          size='small' centered
+          
         // alt={`${user.firstName} ${user.lastName}`}
         />
 
@@ -52,6 +54,6 @@ export default function Profile() {
   )
 
 }
+export default Profile;
 
-//---------------------------------------------------
 

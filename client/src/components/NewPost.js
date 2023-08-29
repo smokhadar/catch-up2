@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useMutation, useQuery } from '@apollo/client';
 import {CREATE_POST} from '../utils/mutations';
+import { Button } from 'semantic-ui-react'
 
 export const NewPost = () => {
     const [formState, setFormState] = useState({
@@ -42,7 +43,11 @@ export const NewPost = () => {
                 onChange={handleChange}
                 type="text" rows="3"></textarea>
                 {/* upload image option? */}
+
+               
+
                 <button className="ui teal button">Post</button>
+
             </form>
 
             {error && (

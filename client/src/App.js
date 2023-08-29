@@ -1,14 +1,16 @@
 import "./App.css";
 import HomePage from "./components/Home";
+import FriendsList from "./components/Friends";
 import { NewPost } from "./components/NewPost";
 import { PostFeed } from "./components/AllPosts";
 import React from "react";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import Login from "./pages/login";
+import SinglePost from "./pages/SinglePost";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Profile from "./pages/profile";
+import Profile from "./components/profile";
 
 // import components
 
@@ -28,6 +30,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/newPost" element={<NewPost />} />
             <Route path="/postFeed" element={<PostFeed />} />
+            <Route path="/postFeed/:postId" element={<SinglePost />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
