@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Grid, List, Input, Menu, Header, Segment, Container, Icon, Dropdown} from 'semantic-ui-react';
 import { NewPost } from './NewPost';
 import { PostFeed } from './AllPosts';
+import { Profile } from './profile';
 
 import { Link } from 'react-router-dom';
 //import { AuthContext } from '../context/auth';
@@ -12,7 +13,6 @@ const pathname = window.location.pathname;
 //const path = pathname === '/' ? 'home' : pathname.substr(1);
 //const handleItemClick = (e, { name }) => setActiveItem(name);
 
-import { Profile } from './profile';
 
 
 const HomePage = () => {
@@ -78,7 +78,7 @@ const HomePage = () => {
             {/* profile */}
             <Profile/>
            </Segment>
-           <Segment>2</Segment>
+           
 
          </Grid.Column>
          <Grid.Column width={6}>
@@ -88,10 +88,10 @@ const HomePage = () => {
            </Segment>
          </Grid.Column>
          <Grid.Column>
+          <Segment>
          <Header>Recently Online</Header>
          <List>
         <List.Item>
-         
           <List.Content>
             <List.Header as='a'>Rachel Gray</List.Header>
             <List.Description>
@@ -140,14 +140,15 @@ const HomePage = () => {
           </List.Content>
         </List.Item>
       </List>
+      </Segment>
          </Grid.Column>
        </Grid.Row>
        <Grid.Row>
          <Grid.Column>
-           <Segment></Segment>
-           <Segment></Segment>
+          
          </Grid.Column>
          <Grid.Column width={6}>
+          <Header>Recent Posts</Header>
            <Segment>
             {/* all posts feed */}
            < PostFeed/>

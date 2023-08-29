@@ -28,6 +28,8 @@ export const Profile = () => {
         <Image
           className="profile-image"
           src={'../avatar_2.png'}
+          size='small' centered
+          
         // alt={`${user.firstName} ${user.lastName}`}
         />
 
@@ -52,6 +54,6 @@ export const Profile = () => {
   )
 
 }
+export default Profile;
 
-//---------------------------------------------------
 
