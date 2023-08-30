@@ -53,17 +53,20 @@ export const CommentForm = ({ postId }) => {
                         rows="3"
                         value={commentText}
                         onChange={handleChange}
+                        style={{ width: '80%'}}
                     ></textarea>
                     <p
-                        className={`${characterCount === 280 || error ? 'text-danger': ''}`}>
+                        className={`${characterCount === 280 || error ? 'text-danger': ''}`}
+                        style={{ fontSize: '14px' }}>
                         Character Count: {characterCount}/280
                         {error && <span>{error.message}</span>}
                     </p>
                 </div>
                 <div>
                     <button
-                    className="ui green button"
-                    type="submit">
+                    className="ui teal button"
+                    type="submit"
+                    style={{ marginBottom: '30px' }}>
                         Add Comment
                     </button>
                 </div>
