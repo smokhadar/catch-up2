@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Typography, Divider, useTheme } from "@mui/material";
+// import { Box, Typography, Divider, useTheme } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { useParams } from 'react-router-dom';
 import { QUERY_USER } from "../utils/queries";
 import LocationInput from "./Location";
 import BioEditor from "./Bio";
-
+import UserImage from "./UserImage";
 import {
   Segment,
   Icon,
@@ -15,6 +15,7 @@ import {
   Grid,
   GridColumn
 } from 'semantic-ui-react';
+
 
 
 export const Profile = () => {
@@ -36,21 +37,20 @@ export const Profile = () => {
   return (
 
     <div>
-
-      <Segment vertical raised >
-        <Image center src='../avatar_2.png' fluid centered size='medium' />
-      </Segment>
-      <Divider />
+      <div>
+        <UserImage />
+      </div>
 
       <Segment>
         <h1>{user?.username}username</h1>
+
         <LocationInput />
       </Segment>
 
       <Segment vertical >
         <BioEditor />
       </Segment>
-      
+
       <Segment vertical >
         <h4>{user.friends?.length}40 friends</h4>
       </Segment>
@@ -70,5 +70,3 @@ export const Profile = () => {
 
 }
 export default Profile;
-
-

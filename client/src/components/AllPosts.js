@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_POSTS } from '../utils/queries';
 // import like, dislike, and comment on posts mutations
 import { LIKE_POST } from '../utils/mutations';
+import { Link } from 'react-router-dom';
 
 export const PostFeed = () => {
     // import posts from db
@@ -18,11 +19,13 @@ export const PostFeed = () => {
     // }
 
     // pass in username from auth
+    // pass alert or message based on if liked or not 
     const handleLike = async (event, postId) => {
+        event.preventDefault();
+        console.log(postId);
         try {
-            event.preventDefault();
             const { data } = await likePost({
-                variables: {_id: postId}
+                variables: {postId}
             });
             console.log('post liked');
         } catch(e) {
@@ -44,9 +47,13 @@ export const PostFeed = () => {
                         </div>
                         <div className="content">
                             <div className="summary">
-                                <a className="user">
-                                    {post.postAuthor}
-                                </a> posted on their page
+                                <Link
+                                to={`/postFeed/${post._id}`}
+                                >
+                                    <a className="user">
+                                        {post.postAuthor}
+                                    </a> posted on their page
+                                </Link>
                                 <div className="date">
                                     {/* include calculated date to render 3 days ago, etc below */}
                                     {post.createdAt}
@@ -56,7 +63,7 @@ export const PostFeed = () => {
                                 {post.postText}
                             </div>
                             <div className="meta"
-                            onClick={() => handleLike(post._id)}>
+                            onClick={e => handleLike(e, post._id)}>
                                 <a className="like">
                                     <i className="teal heart icon"></i>{post.likeCount}
                                 </a>
