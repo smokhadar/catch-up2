@@ -16,7 +16,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Profile from "./components/profile";
+import Profile from "./components/Profile";
 import { setContext } from "@apollo/client/link/context";
 import { AuthProvider } from "./context/authContext";
 // import components

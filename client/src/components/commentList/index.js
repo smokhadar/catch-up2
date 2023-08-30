@@ -8,7 +8,7 @@ const CommentList = ({ comments = [] }) => {
   return (
     <>
       <h4
-        className="p-5 display-inline-block"
+        className="p-5"
         style={{ marginTop: '20px', marginLeft: '80px', marginBottom: '25px', textAlign: 'left' }}
       >
         Comments
@@ -16,7 +16,7 @@ const CommentList = ({ comments = [] }) => {
       <div className="flex-row my-4">
         {comments &&
           comments.map((comment) => (
-            <div key={comment._id} className="col-12 mb-3 pb-3">
+            <div key={comment._id} className="mb-3 pb-3">
               <div className="p-3 bg-dark text-light">
                 <h5 className="card-header" 
                     style={{ textAlign: 'left', marginLeft: '80px' }}>

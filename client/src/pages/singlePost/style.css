@@ -8,7 +8,7 @@
     display: flex;
     margin-top: 30px;
     margin-bottom: 10px;
-    width: 80%;
+    width: 90%;
     justify-content: flex-start;
 }
 
@@ -26,19 +26,29 @@
 }
 
 .extra.text {
-    width: 80%;
+    width: 90%;
     text-align: left;
     font-size: 18px;
 }
 
 .like-cont {
     display: flex;
-    width: 80%;
+    width: 90%;
     margin-top: 5px;
+}
+
+.deleteBtn {
+    display: flex;
+    width: 70%;
+    justify-content: flex-end;
 }
 
 @media screen and (max-width: 550px) {
     .summary {
         font-size: 12px;
+    }
+
+    .allComments {
+        margin-left: 0px;
     }
 }

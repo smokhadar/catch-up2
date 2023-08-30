@@ -6,6 +6,7 @@ import { useQuery, useMutation } from "@apollo/client";
 
 import CommentList from "../../components/commentList/index";
 import CommentForm from "../../components/commentForm/index";
+import DeleteButton from "../../components/DeleteButton";
 
 import { LIKE_POST } from "../../utils/mutations";
 import { QUERY_SINGLE_POST } from "../../utils/queries";
@@ -26,10 +27,10 @@ const SinglePost = () => {
     try {
       event.preventDefault();
       const { data } = await likePost({
-        variables: { _id: postId },
+        variables: { _id: postId }
       });
       console.log("post liked");
-    } catch (e) {
+    } catch(e) {
       console.log(e);
     }
   };
@@ -49,18 +50,21 @@ const SinglePost = () => {
         </div>
         <div className="extra text">{post.postText}</div>
         <div className="like-cont">
-        <div className="meta" 
-             onClick={() => handleLike(post._id)}>
-          <a className="like">
-            <i className="teal heart icon">{post.likeCount}</i>
-          </a>
+          <div className="meta" onClick={() => handleLike(post._id)}>
+            <a className="like">
+              <i className="teal heart icon">{post.likeCount}</i>
+            </a>
+          </div>
         </div>
+        <div className="deleteBtn">
+          <DeleteButton postId={post._id} />
         </div>
       </div>
       <div className="container left aligned">
         <CommentList comments={post.comments} />
         <CommentForm postId={post._id} />
       </div>
+      {error && <div>{error.message}</div>}
     </div>
   );
 };
