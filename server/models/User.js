@@ -22,6 +22,9 @@ const userSchema = new Schema(
       type: String, //Maybe change this to IMG or something
       required: false,
     },
+    token: {
+      type: String,
+    },
     // posts: [posts],
     posts: [
       {

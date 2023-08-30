@@ -1,6 +1,7 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
+const cors = require("cors");
 // const { dblClick } = require('@testing-library/user-event/dist/click');
 const dotenv = require("dotenv");
 const { typeDefs, resolvers } = require("./schemas/index");
@@ -18,10 +19,11 @@ const server = new ApolloServer({
     await verifyUser(req);
     return {
       email: req.email,
+      loggedInUserId: req.loggedInUserId,
     };
   },
 });
-
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
