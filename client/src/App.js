@@ -7,6 +7,7 @@ import React from "react";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import Login from "./pages/login";
+
 import SinglePost from "./pages/singlePost/SinglePost";
 import {
   ApolloClient,
@@ -17,15 +18,16 @@ import {
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./components/profile";
 import { setContext } from "@apollo/client/link/context";
+import { AuthProvider } from "./context/authContext";
 // import components
 
-const httpLink = createHttpLink({ uri: "http://localhost:3001/" });
+const httpLink = createHttpLink({ uri: "http://localhost:3001/graphql" });
 
 const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: localStorage.getItem("token") || "",
+      authorization: `Bearer ${localStorage.getItem("token") || "test@12346"}`,
     },
   };
 });
@@ -38,21 +40,24 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="App">
-          <Routes>
-            <Route path="/login" element={<Login />} exact />
-            {/* <Route path="/" element={<LoginPage />} /> */}
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/newPost" element={<NewPost />} />
-            <Route path="/postFeed" element={<PostFeed />} />
-            <Route path="/postFeed/:postId" element={<SinglePost />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </div>
-      </Router>
-    </ApolloProvider>
+    <AuthProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Login />} exact />
+
+              {/* <Route path="/" element={<LoginPage />} /> */}
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/newPost" element={<NewPost />} />
+              <Route path="/postFeed" element={<PostFeed />} />
+              <Route path="/postFeed/:postId" element={<SinglePost />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+        </Router>
+      </ApolloProvider>
+    </AuthProvider>
   );
 }
 

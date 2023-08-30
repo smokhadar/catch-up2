@@ -5,7 +5,7 @@ module.exports.verifyUser = async (req) => {
     req.email = null;
     req.loggedInUserId = null;
     const bearerHeader = req.headers.authorization;
-    // console.log("Token Header", bearerHeader);
+    console.log("Token Header", bearerHeader);
     if (bearerHeader) {
       const token = bearerHeader.split(" ")[1];
 

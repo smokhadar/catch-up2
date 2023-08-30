@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { combineResolvers } = require("graphql-resolvers");
-
+const { ApolloError } = require("apollo-server-errors");
 const userModel = require("../../models/User");
 const postModel = require("../../models/Post");
 const { isAuthenticated } = require("./middleware");
@@ -29,22 +29,35 @@ module.exports = {
   Mutation: {
     signup: async (_, { input }) => {
       try {
+        console.log("signup:", input);
         const check = await userModel.findOne({ email: input.email });
         if (check) {
-          throw new Error("Email already in use");
+          throw new ApolloError("Email already in use");
         }
+
+        const secret = process.env.JWT_SECRET_KEY || "mysecret";
+        const ntoken = jwt.sign({ email: input.email }, secret, {
+          expiresIn: "1d",
+        });
         const hasedPassword = await bcrypt.hash(input.password, 12);
-        const newUser = new userModel({ ...input, password: hasedPassword });
+        const newUser = new userModel({
+          ...input,
+          password: hasedPassword,
+          token: ntoken,
+        });
 
         const result = await newUser.save();
+
         return result;
       } catch (error) {
+        throw new ApolloError(error.message);
         console.error(error);
       }
     },
 
     login: async (_, { input }) => {
       try {
+        console.log(` Login input ${input.email} ${input.password}`);
         const user = await userModel.findOne({ email: input.email });
         if (!user) {
           throw new Error("User not found");
@@ -62,10 +75,11 @@ module.exports = {
         const token = jwt.sign({ email: user.email }, secret, {
           expiresIn: "1d",
         });
-
-        return { token };
+        user.token = token;
+        console.log("User found", user);
+        return  user ;
       } catch (error) {
-        console.log(error);
+        console.log("User Login Error", error);
       }
     },
   },

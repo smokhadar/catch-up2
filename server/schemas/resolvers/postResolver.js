@@ -17,6 +17,7 @@ const resolvers = {
       async (_, __, { loggedInUserId }) => {
         try {
           //find the posts for the logged in user
+          console.log(`All Posts ${loggedInUserId}`);
           const posts = await Post.find({ user: loggedInUserId }).sort({
             createdAt: -1,
           });
@@ -32,7 +33,8 @@ const resolvers = {
       isPostOwner,
       async (_, { postId }) => {
         try {
-          const post = await Post.findById(postId);
+          const post = await Post.findById(postId).populate("user");
+          console.log("Returned post for post id ", post);
           if (!post) {
             throw new Error("Post not found");
           } else {
@@ -70,6 +72,7 @@ const resolvers = {
       isAuthenticated,
       async (_, { postText, postAuthor }, { email }) => {
         try {
+          console.log(`Post  ${postText} ${postAuthor}  ${email}`);
           const user = await userModel.findOne({ email });
           const post = new Post({
             postText: postText,
@@ -225,7 +228,8 @@ const resolvers = {
     //field level resolver
     user: async (parent) => {
       try {
-        console.log(parent.user);
+        console.log("finding user", parent.user);
+
         const user = await userModel.findById(parent.user);
         if (!user) {
           throw new Error("user not found");
