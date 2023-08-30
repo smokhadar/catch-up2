@@ -7,7 +7,7 @@ import React from "react";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import Login from "./pages/login";
-import SinglePost from "./pages/SinglePost";
+import SinglePost from "./pages/singlePost/SinglePost";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./components/profile";
