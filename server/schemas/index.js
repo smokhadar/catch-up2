@@ -1,5 +1,5 @@
-const typeDefs = require('./typeDefsPost');
+const typeDefs = require("./typeDefs");
 // const typeDefsUser = require('./typeDefs');
-const resolvers = require('./resolvers/index');
+const resolvers = require("./resolvers/index");
 
-module.exports = {typeDefs, resolvers};
+module.exports = { typeDefs, resolvers };

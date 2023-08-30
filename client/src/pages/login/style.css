@@ -182,11 +182,21 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 20px 0 10px 0;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
 }
 
 /* register CSS */
+
+/* error and success style */
+.error_text {
+  color: #b94a48;
+}
+
+.success_text {
+  color: var(--green-color);
+}
+/* error and success style */
 
 /*----Footer------*/
 .login_footer {
