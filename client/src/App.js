@@ -8,14 +8,31 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import Login from "./pages/login";
 import SinglePost from "./pages/SinglePost";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./components/profile";
-
+import { setContext } from "@apollo/client/link/context";
 // import components
 
+const httpLink = createHttpLink({ uri: "http://localhost:3001/" });
+
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: localStorage.getItem("token") || "",
+    },
+  };
+});
+
 const client = new ApolloClient({
-  uri: "/graphql",
+  link: authLink.concat(httpLink),
+  // uri: "/graphql",
   cache: new InMemoryCache(),
 });
 
