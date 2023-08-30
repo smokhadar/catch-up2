@@ -19,6 +19,11 @@ export const QUERY_SINGLE_POST = gql`
       postText
       postAuthor
       createdAt
+      comments {
+        _id
+        commentText
+        createdAt
+      }
     }
   }
 `;
