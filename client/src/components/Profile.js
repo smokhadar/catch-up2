@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { useParams } from 'react-router-dom';
 import { QUERY_USER } from "../utils/queries";
 import LocationInput from "./Location";
+import BioEditor from "./Bio";
 
 import {
   Segment,
@@ -47,12 +48,18 @@ export const Profile = () => {
       </Segment>
 
       <Segment vertical >
+        <BioEditor />
+      </Segment>
+      
+      <Segment vertical >
         <h4>{user.friends?.length}40 friends</h4>
       </Segment>
 
       <Segment vertical >
         <h4>{user.posts?.length} 40 posts</h4>
       </Segment>
+
+
 
       <Segment vertical>
         <Button color='blue' size='tiny'>Edit Profile</Button>
