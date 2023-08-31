@@ -9,7 +9,8 @@ const { isAuthenticated } = require("./middleware");
 module.exports = {
   Query: {
     users: async () => {
-      const users = await userModel.find();
+      const users = await userModel.find().populate("post");
+      console.log("Users" + users.length);
       return users;
     },
     user: combineResolvers(isAuthenticated, async (_, __, { email }) => {
@@ -77,7 +78,7 @@ module.exports = {
         });
         user.token = token;
         console.log("User found", user);
-        return  user ;
+        return user;
       } catch (error) {
         console.log("User Login Error", error);
       }
