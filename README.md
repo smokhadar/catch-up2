@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# CatchUp 2.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CatchUpLogo](./client/public/images/screenShots/Catchup%202.0.png)
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [User_Story](#user_story)
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Credits](#credits)
+- [Collaborators](#collaborators)
+- [Tutorials](#tutorials)
+- [License](#license)
 
-### `npm start`
+## User_Story
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+AS A person that wants to stay in contact with friends and family,
+I WANT to post content, and engage with others content,
+SO THAT I can maintain relationships online.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Description
 
-### `npm test`
+This is a social media application where users can create an account, create a post, delete their own post, view all users’ post, and add comments on other user’s posts. We built this project using the MERN(MongoDb, Express, React, and Node.js) stack, a GraphQl API, user authentication with JWT, and Semantic UI to style our application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+There is no installation necessary. Click on the link below to explore our app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Deployed Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[CatchUp 2.0]()
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Check out our Repo.
 
-### `npm run eject`
+[CatchUp 2.0 Repo](https://github.com/smokhadar/catch-up2)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![signUp](./client/public/images/screenShots/login.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Home](./client/public/images/screenShots/home.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Credits
 
-### Code Splitting
+We thank our instructor Samantha Randolph and the UC Berkley FullStack Bootcamp TA’s for supporting us with building our project. We had help from the users from StackOverflow as well.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Collaborators
 
-### Analyzing the Bundle Size
+[Deandra](https://github.com/ddiedrick)  
+[Nidhi](https://github.com/shahnidhi20)  
+[Paola](https://github.com/perfectblue0)  
+[Samira](https://github.com/smokhadar)     
+[Sarah](https://github.com/minutemin)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## License
 
-### Making a Progressive Web App
+Please refer to the link below if you need to read the terms and conditions of the license:
+- [MIT License](https://opensource.org/licenses/MIT)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Tutorials
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
