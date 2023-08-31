@@ -46,7 +46,7 @@ There is no installation necessary. Click on the link below to explore our app.
 
 ## Usage
 
-The link will take you to a login page. To use the app, you must register and create a username, then you are able to login.  Once logged in, you are taken to your homepage.  At the nav bar, you have tabs on the left for home, messaging and friend's list, on the right is a search for friends bar, and a logout button. On the main page you have your profile section on the left that lists your email, username, photo, friend's count and posts count.  There is a post section where you can enter whatever thoughts or message you want to share.  Below that is a feed of all the posts from other users.  Once you post, you are able to see all of your posts in the feed. On the right is a list of other users currently online. 
+The link will take you to a login page. To use the app, you must register and create a username, then you are able to login.  Once logged in, you are taken to your homepage.  At the nav bar, you have tabs on the left for home, messaging and friend's list, on the right is a search for friends bar, and a logout button. On the main page you have your profile section on the left that lists your email, username, photo, friend's count and posts count.  There is a post section where you can enter whatever thoughts or message you want to share.  Below that is a feed of all the posts from other users.  Once you post, you are able to see all of your posts in the feed. Users are also able to like and comment on each posts.  On the right is a list of other users currently online. 
 
 ## Screenshots
 
