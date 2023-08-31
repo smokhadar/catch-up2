@@ -1,25 +1,12 @@
-
-import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_POSTS } from '../utils/queries';
+import React, { useState } from "react";
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_POSTS } from "../utils/queries";
 // import like, dislike, and comment on posts mutations
-import { LIKE_POST } from '../utils/mutations';
-import { Link } from 'react-router-dom';
-import { DELETE_POST } from '../utils/mutations';
-import { Button } from 'semantic-ui-react';
+import { LIKE_POST } from "../utils/mutations";
+import { Link } from "react-router-dom";
+import { DELETE_POST } from "../utils/mutations";
+import { Button } from "semantic-ui-react";
 import { gql } from "@apollo/client";
-
-export const PostFeed = () => {
-    // import posts from db
-    const { loading, data } = useQuery(GET_POSTS, {
-        fetchPolicy: "no-cache"
-    });
-    const posts = data?.getPosts || [];
-    const [deletePost] = useMutation(DELETE_POST);
-    const [isDeleted, setIsDeleted] = useState(false); 
-    const [likePost, { error }] = useMutation(LIKE_POST);
-
-
 
 const GET_POSTS1 = gql`
   query {
@@ -32,12 +19,15 @@ const GET_POSTS1 = gql`
     }
   }
 `;
-
-
-
+export const PostFeed = () => {
+  // import posts from db
+  const { loading, data } = useQuery(GET_POSTS1);
+  const posts = data?.posts || [];
+  const [deletePost] = useMutation(DELETE_POST);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [likePost, { error }] = useMutation(LIKE_POST);
 
   console.log("Posts loaded", posts);
-
 
   // const handleChange = (event) => {
   //     const { postId } = event.target;
@@ -56,29 +46,25 @@ const GET_POSTS1 = gql`
     } catch (e) {
       console.log(e);
     }
-  }
-    const handleDeleteClick = async  ( event,postId) => {
-        
-        try {
-            event.preventDefault();
-          const { data } = await deletePost({
-            variables: { _id:postId },
-          });
-    
-          if (data && data.deletePost) {
-            setIsDeleted(true);
-           deletePost(postId);
-            //onDeleteSuccess(postId);
-          } else {
-            console.error('Delete post failed');
-          }
-        } catch (error) {
-          console.error(error);
-        }
-       
-    }
+  };
+  const handleDeleteClick = async (event, postId) => {
+    try {
+      event.preventDefault();
+      const { data } = await deletePost({
+        variables: { _id: postId },
+      });
 
-    
+      if (data && data.deletePost) {
+        setIsDeleted(true);
+        deletePost(postId);
+        //onDeleteSuccess(postId);
+      } else {
+        console.error("Delete post failed");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -101,14 +87,18 @@ const GET_POSTS1 = gql`
                     <div className="date">
                       {/* include calculated date to render 3 days ago, etc below */}
                       {post.createdAt}
-
                     </div>
                   </div>
                   <div className="extra text">{post.postText}</div>
                   <div>
-                    <Button size='mini' color='red'  onClick={() => handleDeleteClick(post._id)}>Delete </Button>
-                               
-                            </div>
+                    <Button
+                      size="mini"
+                      color="red"
+                      onClick={() => handleDeleteClick(post._id)}
+                    >
+                      Delete{" "}
+                    </Button>
+                  </div>
 
                   <div
                     className="meta"
@@ -130,4 +120,3 @@ const GET_POSTS1 = gql`
     </div>
   );
 };
-
