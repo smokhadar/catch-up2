@@ -62,7 +62,8 @@ export const Profile = () => {
           {user ? (
             <>
               <h1>{user.email} </h1>
-              <h3>{user.username} </h3>
+              <h3> <Link to={`/profile/${user.id}`} className="ui teal link">
+          {user?.username}username </Link></h3>
             </>
           ) : (
             <>
