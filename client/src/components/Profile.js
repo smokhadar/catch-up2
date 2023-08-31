@@ -10,6 +10,7 @@ import { userContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
+import { gql } from "@apollo/client";
 import {
   Segment,
   Icon,
@@ -20,9 +21,22 @@ import {
   GridColumn,
 } from "semantic-ui-react";
 
+const GET_USERDATA = gql`
+  query {
+    posts {
+      _id
+      postAuthor
+      postText
+      createdAt
+      likeCount
+    }
+  }
+`;
+
 export const Profile = () => {
   const { user, logout } = useContext(AuthContext);
   console.log("Profile: ", user);
+
   // const { userId, postId } = useParams();
   // const { loading, error, data } = useQuery(QUERY_USER, {
   //   variables: { userId },
@@ -47,7 +61,8 @@ export const Profile = () => {
         <Segment>
           {user ? (
             <>
-              <h1>{user.email} logged in</h1>
+              <h1>{user.email} </h1>
+              <h3>{user.username} </h3>
             </>
           ) : (
             <>
