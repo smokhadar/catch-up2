@@ -18,9 +18,12 @@ const resolvers = {
         try {
           //find the posts for the logged in user
           console.log(`All Posts ${loggedInUserId}`);
-          const posts = await Post.find({ user: loggedInUserId }).sort({
-            createdAt: -1,
-          });
+          const posts = await Post.find({ user: loggedInUserId })
+            .sort({
+              createdAt: -1,
+            })
+            .populate("user");
+          console.log(`Posts ${posts.length}`);
           return posts;
         } catch (err) {
           throw new Error(err);
