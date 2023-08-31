@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_POSTS } from '../utils/queries';
 // import like, dislike, and comment on posts mutations
 import { LIKE_POST } from '../utils/mutations';
 import { Link } from 'react-router-dom';
+import { DELETE_POST } from '../utils/mutations';
+import { Button } from 'semantic-ui-react';
 
 export const PostFeed = () => {
     // import posts from db
@@ -11,7 +13,8 @@ export const PostFeed = () => {
         fetchPolicy: "no-cache"
     });
     const posts = data?.getPosts || [];
-
+    const [deletePost] = useMutation(DELETE_POST);
+    const [isDeleted, setIsDeleted] = useState(false); 
     const [likePost, { error }] = useMutation(LIKE_POST);
 
     // const handleChange = (event) => {
@@ -31,6 +34,26 @@ export const PostFeed = () => {
         } catch(e) {
             console.log(e);
         }
+    }
+    const handleDeleteClick = async  ( event,postId) => {
+        
+        try {
+            event.preventDefault();
+          const { data } = await deletePost({
+            variables: { _id:postId },
+          });
+    
+          if (data && data.deletePost) {
+            setIsDeleted(true);
+           deletePost(postId);
+            //onDeleteSuccess(postId);
+          } else {
+            console.error('Delete post failed');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+       
     }
 
     return (
@@ -52,7 +75,7 @@ export const PostFeed = () => {
                                 >
                                     <a className="user">
                                         {post.postAuthor}
-                                    </a> posted on their page
+                                    </a> &nbsp; posted on their page
                                 </Link>
                                 <div className="date">
                                     {/* include calculated date to render 3 days ago, etc below */}
@@ -62,6 +85,11 @@ export const PostFeed = () => {
                             <div className="extra text">
                                 {post.postText}
                             </div>
+                            <div>
+                                <Button size='mini' color='red'  onClick={() => handleDeleteClick(post._id)}>Delete </Button>
+                               
+                            </div>
+
                             <div className="meta"
                             onClick={e => handleLike(e, post._id)}>
                                 <a className="like">

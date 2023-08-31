@@ -28,6 +28,7 @@ export const NewPost = () => {
             });
 
             console.log('post successfully created');
+            window.location.reload(true);
         } catch(e) {
             console.error(e);
         }
