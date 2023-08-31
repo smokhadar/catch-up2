@@ -61,9 +61,9 @@ export const Profile = () => {
         <Segment>
           {user ? (
             <>
-              <h1>{user.email} </h1>
-              <h3> <Link to={`/profile/${user.id}`} className="ui teal link">
-          {user?.username}username </Link></h3>
+              <h1> <Link to={`/profile/${user.id}`} className="ui teal link">
+                {user?.username}</Link></h1>
+              <h3>{user.email} </h3>
             </>
           ) : (
             <>
