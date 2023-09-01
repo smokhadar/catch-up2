@@ -1,38 +1,12 @@
-import { Formik, Form } from "formik";
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useForm } from "../../utils/hooks";
 import { useMutation } from "@apollo/react-hooks";
 import { TextField, Button, Container, Stack, Alert, Box } from "@mui/material";
-
-import { gql } from "graphql-tag";
+import { REGISTER_USER } from '../../utils/mutations';
 import { useNavigate } from "react-router-dom";
-import RegisterInput from "../inputs/registerInput";
-
-const REGISTER_USER = gql`
-  # mutation SignUp($email: String!, $password: String!, $username: String!) {
-  #   signUp(email: $email, password: $password, username: $username) {
-  #     id
-  #     username
-  #     email
-  #     password
-  #   }
-  # }
-
-  mutation Mutation($input: signupInput) {
-    signup(input: $input) {
-      username
-      id
-      email
-      createdAt
-      token
-    }
-  }
-`;
 
 export default function RegisterForm({ setVisible }) {
-  //const dispatch = useDispatch();
   const context = useContext(AuthContext);
   let navigate = useNavigate();
   const [errors, setErrors] = useState([]);
@@ -104,61 +78,5 @@ export default function RegisterForm({ setVisible }) {
         </Container>
       </div>
     </div>
-
-    // <div className="blur">
-    //   <div className="register">
-    //     <div className="register_header">
-    //       <i className="exit_icon"></i>
-    //       <span>Sign Up</span>
-    //     </div>
-    //     <Formik>
-    //       {(formik) => (
-    //         <Form className="register_form">
-    //           <div className="regi_line">
-    //             <RegisterInput
-    //               type="text"
-    //               placeholder="First name"
-    //               name="firstName"
-    //               onchange={onChange}
-    //             ></RegisterInput>
-
-    //             <RegisterInput
-    //               type="text"
-    //               placeholder="Last name"
-    //               name="lastName"
-    //               onchange={onChange}
-    //             ></RegisterInput>
-    //           </div>
-    //           <div className="regi_line">
-    //             <RegisterInput
-    //               type="text"
-    //               placeholder="Email"
-    //               name="email"
-    //               onchange={onChange}
-    //             ></RegisterInput>
-    //           </div>
-    //           <div className="regi_line">
-    //             <RegisterInput
-    //               type="password"
-    //               placeholder="New password"
-    //               name="password"
-    //               onchange={onChange}
-    //             ></RegisterInput>
-    //           </div>
-
-    //           <div className="regi_infos">
-    //             By clicking Sign Up, you agree to our{" "}
-    //             <span>Terms, Data policy &nbsp;</span>
-    //             and <span>Cookie Policy.</span> You may recieve SMS
-    //             notifications from us and can opt out at any time.
-    //           </div>
-    //           <div className="regi_btn_wrapper">
-    //             <button className="blue_btn open_signup">Sign Up</button>
-    //           </div>
-    //         </Form>
-    //       )}
-    //     </Formik>
-    //   </div>
-    // </div>
   );
 }

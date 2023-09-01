@@ -5,6 +5,7 @@ import { PostFeed } from "../components/AllPosts";
 import { Grid, Segment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
+// 
 export default function ProfilePage() {
   return (
 

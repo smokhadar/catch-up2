@@ -4,13 +4,13 @@ import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { QUERY_USER } from "../utils/queries";
 import LocationInput from "./Location";
-import BioEditor from "./Bio";
 import UserImage from "./UserImage";
 import { userContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { gql } from "@apollo/client";
+
 import {
   Segment,
   Icon,
@@ -74,23 +74,23 @@ export const Profile = () => {
           <LocationInput />
         </Segment>
 
-        <Segment vertical>
-          <BioEditor />
-        </Segment>
+        {/* <Segment vertical> */}
+          {/* <BioEditor /> */}
+        {/* </Segment> */}
 
-        <Segment vertical>
-          <h4>{user.friends?.length}40 friends</h4>
-        </Segment>
+        {/* <Segment vertical>
+          {/* <h4>{user.friends?.length}40 friends</h4> */}
+        {/* </Segment> */}
 
-        <Segment vertical>
-          <h4>{user.posts?.length} 40 posts</h4>
-        </Segment>
-
-        <Segment vertical>
-          <Button color="blue" size="tiny">
-            Edit Profile
-          </Button>
-        </Segment>
+        {/* <Segment vertical> */}
+          {/* <h4>{user.posts?.length} 20 posts</h4> */}
+        {/* </Segment> */}
+{/*  */}
+        {/* <Segment vertical> */}
+          {/* <Button color="blue" size="tiny"> */}
+            {/* Edit Profile */}
+          {/* </Button> */}
+        {/* </Segment> */}
       </div>
     </>
   );

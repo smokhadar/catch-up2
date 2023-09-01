@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import {useMutation, useQuery } from '@apollo/client';
 import {CREATE_POST} from '../utils/mutations';
 import { TextArea, Header } from 'semantic-ui-react'
+import Auth from '../context/authContext';
 
-export const NewPost = () => {
+export const NewPost = ( { user }) => {
+    console.log('testing user',user);
+    
     const [formState, setFormState] = useState({
         postBody: '',
         username: 'test'
+        // username: user.username
     })
+
     const [createPost, { error }] = useMutation(CREATE_POST);
 
     const handleChange = (event) => {
