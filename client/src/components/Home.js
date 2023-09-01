@@ -45,13 +45,13 @@ const HomePage = () => {
           as={Link}
           to="/home"
         />
-        <Menu.Item
+        {/* <Menu.Item
           name="messages"
           // active={activeItem === 'messages'}
           onClick=""
           as={Link}
           to="/home"
-        />
+        /> */}
 
         <Dropdown item text="Friends">
           <Dropdown.Menu>

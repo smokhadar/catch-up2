@@ -1,27 +1,15 @@
 import "./App.css";
 import HomePage from "./components/Home";
-import FriendsList from "./components/Friends";
 import { NewPost } from "./components/NewPost";
 import { PostFeed } from "./components/AllPosts";
 import React from "react";
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
 import Login from "./pages/login";
-
 import SinglePost from "./pages/singlePost/SinglePost";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider,createHttpLink } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Profile from "./pages/ProfilePage";
 import { setContext } from "@apollo/client/link/context";
 import { AuthProvider } from "./context/authContext";
-
-// import components
 
 const httpLink = createHttpLink({ uri: "http://localhost:3001/graphql" });
 
@@ -49,8 +37,6 @@ function App() {
           <div className="App">
             <Routes>
               <Route path="/" element={<Login />} exact />
-
-              {/* <Route path="/" element={<LoginPage />} /> */}
               <Route path="/home" element={<HomePage />} />
               <Route path="/newPost" element={<NewPost />} />
               <Route path="/postFeed" element={<PostFeed />} />

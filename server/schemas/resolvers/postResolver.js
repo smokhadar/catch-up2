@@ -5,7 +5,7 @@ const {
 
 const { combineResolvers } = require("graphql-resolvers");
 const Post = require("../../models/Post");
-const userModel = require("../../models/User");
+const User = require("../../models/User");
 const { isAuthenticated, isPostOwner } = require("./middleware");
 // add authorization function
 
@@ -13,7 +13,7 @@ const resolvers = {
   Query: {
     //get all the posts for the authenticated and logged in user
     posts: combineResolvers(
-      isAuthenticated,
+      // isAuthenticated,
       async (_, __, { loggedInUserId }) => {
         try {
           //find the posts for the logged in user
@@ -72,11 +72,11 @@ const resolvers = {
   },
   Mutation: {
     createPost: combineResolvers(
-      isAuthenticated,
+      // isAuthenticated,
       async (_, { postText, postAuthor }, { email }) => {
         try {
           console.log(`Post  ${postText} ${postAuthor}  ${email}`);
-          const user = await userModel.findOne({ email });
+          const user = await User.findOne({ email: email });
           const post = new Post({
             postText: postText,
             postAuthor: user.username,

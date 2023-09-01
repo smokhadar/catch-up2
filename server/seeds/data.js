@@ -2,8 +2,8 @@
 const mongoose = require('mongoose');
 const { faker } = require('@faker-js/faker');
 
-const Post = require('./models/Post');
-const User = require('./models/User');
+const Post = require('../models/Post');
+const User = require('../models/User');
 
 // Connect to MongoDB database 
 mongoose.connect('mongodb://localhost/catchup2', {
