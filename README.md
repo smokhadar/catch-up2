@@ -38,7 +38,7 @@ There is no installation necessary. Click on the link below to explore our app.
 
 ### Deployed Application
 
-[CatchUp 2.0](https://catch-up-2-7cee2873119e.herokuapp.com/ )
+[CatchUp 2.0](https://apollo-client-auth-fa0e5c4e7814.herokuapp.com/)
 
 ### Check out our Repo.
 
